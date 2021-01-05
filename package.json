@@ -1,0 +1,33 @@
+{
+  "name": "senswap-api",
+  "version": "1.0.0",
+  "description": "SenSwap - Powered by Descartes Network",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon index.js",
+    "stag": "NODE_ENV=staging nodemon index.js",
+    "prod": "NODE_ENV=production nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DescartesNetwork/senswap-api.git"
+  },
+  "author": "Tu Phan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DescartesNetwork/senswap-api/issues"
+  },
+  "homepage": "https://github.com/DescartesNetwork/senswap-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.10",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
