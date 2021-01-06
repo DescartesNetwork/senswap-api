@@ -25,30 +25,6 @@ module.exports = {
   },
 
   /**
-   * Get users
-   * @function getUsers
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
-   */
-  getUsers: function (req, res, next) {
-    const condition = req.query.condition || {}
-    const limit = req.query.limit || configs.db.LIMIT_DEFAULT;
-    const page = req.query.page || configs.db.PAGE_DEFAULT;
-
-    return db.User.aggregate([
-      { $match: condition },
-      { $sort: { createdAt: -1 } },
-      { $skip: limit * page },
-      { $limit: limit },
-      { $project: { _id: 1 } }
-    ]).exec(function (er, re) {
-      if (er) return next('Database error');
-      return res.send({ status: 'OK', data: re, pagination: { limit, page } });
-    });
-  },
-
-  /**
    * Add an user
    * @function addUser
    * @param {*} req

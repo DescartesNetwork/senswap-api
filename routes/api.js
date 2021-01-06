@@ -1,13 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 /**
  * Middlewares & Graphs
  */
-var {
-  auth, user, file, item,
-  project, order, recommendation,
-  comment, feeling, stat,
+const {
+  user
 } = require('../controllers');
 
 /**
@@ -18,11 +16,11 @@ var {
  * @method DELETE: delete data
  */
 
-// User (core)
+// User
 router.get('/user', user.getUser);
 router.post('/user', user.addUser);
 router.put('/user', user.updateUser);
-// router.delete('/user', user.deleteUser);
+router.delete('/user', user.deleteUser);
 
 /**
  * Module exports
