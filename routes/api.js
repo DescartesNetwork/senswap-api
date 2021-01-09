@@ -5,7 +5,7 @@ const router = express.Router();
  * Middlewares & Graphs
  */
 const {
-  user
+  auth, faucet, user,
 } = require('../controllers');
 
 /**
@@ -21,6 +21,9 @@ router.get('/user', user.getUser);
 router.post('/user', user.addUser);
 router.put('/user', user.updateUser);
 router.delete('/user', user.deleteUser);
+
+// Faucet
+router.post('/faucet', auth.preventSpam, faucet.airdrop)
 
 /**
  * Module exports

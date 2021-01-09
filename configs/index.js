@@ -1,12 +1,14 @@
-var env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV;
 
-var settings = require('./settings.config');
-var db = require('./db.config');
+const db = require('./db.config');
+const settings = require('./settings.config');
+const sol = require('./sol.config');
 
 /**
  * Module exports
  */
 module.exports = {
-  settings: settings[env],
   db: db[env],
+  settings: settings[env],
+  sol: sol[env],
 };

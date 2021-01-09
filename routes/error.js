@@ -5,6 +5,7 @@ module.exports = {
   },
   // Error handler
   errorHandler: function (er, req, res, next) {
+    console.error(er); // For debugging
     res.status(500);
     res.send({ errors: [{ message: er || 'Unknown error' }] });
   }

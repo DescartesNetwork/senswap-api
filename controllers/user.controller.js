@@ -1,6 +1,4 @@
-var configs = global.configs;
-
-var db = require('../db');
+const db = require('../db');
 
 
 module.exports = {
@@ -14,14 +12,12 @@ module.exports = {
    */
   getUser: function (req, res, next) {
     const { address } = req.query;
-    if (!address) return next('Invalid inputs');
+    if (!address) return next('Invalid input');
 
-    return db.User.findOne(
-      { address },
-      function (er, re) {
-        if (er) return next('Database error');
-        return res.send({ status: 'OK', data: re });
-      });
+    return db.User.findOne({ address }, function (er, re) {
+      if (er) return next('Database error');
+      return res.send({ status: 'OK', data: re });
+    });
   },
 
   /**
@@ -33,7 +29,7 @@ module.exports = {
    */
   addUser: function (req, res, next) {
     const { user } = req.body;
-    if (!user) return next('Invalid inputs');
+    if (!user) return next('Invalid input');
 
     const newUser = new db.User({ ...user });
     return newUser.save(function (er, re) {
@@ -51,7 +47,7 @@ module.exports = {
    */
   updateUser: function (req, res, next) {
     const { user } = req.body;
-    if (!user) return next('Invalid inputs');
+    if (!user) return next('Invalid input');
 
     return db.User.findOneAndUpdate(
       { _id: user._id },
@@ -72,13 +68,11 @@ module.exports = {
    */
   deleteUser: function (req, res, next) {
     const { user } = req.body;
-    if (!user) return next('Invalid inputs');
+    if (!user) return next('Invalid input');
 
-    return db.Item.findOneAndDelete(
-      { _id: user._id },
-      function (er, re) {
-        if (er) return next('Database error');
-        return res.send({ status: 'OK', data: re });
-      });
+    return db.Item.findOneAndDelete({ _id: user._id }, function (er, re) {
+      if (er) return next('Database error');
+      return res.send({ status: 'OK', data: re });
+    });
   },
 }

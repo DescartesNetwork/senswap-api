@@ -7,21 +7,24 @@ var configs = {};
  * Development configurations
  */
 configs.development = {
-  PORT: 3001,
+  port: 3001,
+  tpm: 6, // times per minute
 };
 
 /**
  * Staging configurations
  */
 configs.staging = {
-  PORT: 3001,
+  port: 3001,
+  tpm: 6, // times per minute
 };
 
 /**
  * Production configurations
  */
 configs.production = {
-  PORT: 3001,
+  port: 3001,
+  tpm: 6, // times per minute
 };
 
 /**

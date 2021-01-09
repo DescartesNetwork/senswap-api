@@ -20,12 +20,14 @@
   },
   "homepage": "https://github.com/DescartesNetwork/senswap-api#readme",
   "dependencies": {
+    "@solana/web3.js": "^0.87.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.10",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "soprox-abi": "0.0.10"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

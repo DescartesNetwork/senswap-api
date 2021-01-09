@@ -61,13 +61,13 @@ app.use(middlewares.parseParams);
 /**
  * Start server
  */
-server.listen(configs.settings.PORT);
+server.listen(configs.settings.port);
 server.on('error', onError);
 server.on('listening', onListening);
 
 function onError(error) {
   if (error.syscall !== 'listen') throw error;
-  const bind = typeof configs.settings.PORT === 'string' ? 'Pipe ' + configs.settings.PORT : 'Port ' + configs.settings.PORT;
+  const bind = typeof configs.settings.port === 'string' ? 'Pipe ' + configs.settings.port : 'Port ' + configs.settings.port;
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
