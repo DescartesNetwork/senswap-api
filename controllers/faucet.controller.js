@@ -6,13 +6,25 @@ const sol = require('../helpers/sol');
 module.exports = {
 
   /**
+   * Get tokens
+   * @function getWhiteList
+   * @param {*} req 
+   * @param {*} res 
+   * @param {*} next 
+   */
+  getWhiteList: (req, res, next) => {
+    const { sol: { tokens } } = configs;
+    return res.send({ status: 'OK', data: { tokens } });
+  },
+
+  /**
    * Airdrop token to users
    * @function airdrop
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
-  airdrop: function (req, res, next) {
+  airdrop: (req, res, next) => {
     const { dstAddress, tokenAddress } = req.body;
     if (!dstAddress || !tokenAddress) return next('Invalid input');
 

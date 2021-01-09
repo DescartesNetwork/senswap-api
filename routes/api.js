@@ -23,7 +23,8 @@ router.put('/user', user.updateUser);
 router.delete('/user', user.deleteUser);
 
 // Faucet
-router.post('/faucet', auth.preventSpam, faucet.airdrop)
+router.get('/faucet', faucet.getWhiteList);
+router.post('/faucet', auth.preventSpam, faucet.airdrop);
 
 /**
  * Module exports

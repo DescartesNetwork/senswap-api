@@ -8,7 +8,7 @@ var configs = {};
  */
 configs.development = {
   port: 3001,
-  tpm: 1, // times per minute
+  tpm: 2, // times per minute
 };
 
 /**
@@ -16,7 +16,7 @@ configs.development = {
  */
 configs.staging = {
   port: 3001,
-  tpm: 1, // times per minute
+  tpm: 2, // times per minute
 };
 
 /**
@@ -24,7 +24,7 @@ configs.staging = {
  */
 configs.production = {
   port: 3001,
-  tpm: 1, // times per minute
+  tpm: 2, // times per minute
 };
 
 /**

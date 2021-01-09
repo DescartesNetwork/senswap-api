@@ -13,8 +13,8 @@ configs.development = {
   },
   node: 'http://localhost:8899',
   tokenFactoryAddress: 'BcfSEsgAp5cfTS18CQTWibq63KJoR2Rkd6ENXu5AyaWU',
-  tokens: ['3ywMF3fJ9UjaUYpsGWptXX6xnK8DbqBtpi8t2nyJJ1Nu'],
-  tokenAccounts: ['GUmSeA4Kg1Xb1J3qwv35y7FJG1VkrEPTAEQwgKqYRGvd'],
+  tokens: ['3ywMF3fJ9UjaUYpsGWptXX6xnK8DbqBtpi8t2nyJJ1Nu', 'BZRjDPpRszJZcdEAaTvukidWdoFTE29yhrxn9XGdkeua'],
+  tokenAccounts: ['GUmSeA4Kg1Xb1J3qwv35y7FJG1VkrEPTAEQwgKqYRGvd', '46xJ5RQ8mJHGuuD2SQcL6iCeCKaY2t4hiF9nEMC3MRa9'],
   airdropAmount: 100000000000n, // 100 SPRX
 };
 
