@@ -5,7 +5,7 @@ const router = express.Router();
  * Middlewares & Graphs
  */
 const {
-  auth, faucet, user,
+  auth, faucet, user, pool,
 } = require('../controllers');
 
 /**
@@ -25,6 +25,13 @@ router.delete('/user', user.deleteUser);
 // Faucet
 router.get('/faucet', faucet.getWhiteList);
 router.post('/faucet', auth.preventSpam, faucet.airdrop);
+
+// Pool
+router.get('/pool', pool.getPool);
+router.get('/pools', pool.getPools);
+router.post('/pool', pool.addPool);
+router.put('/pool', pool.updatePool);
+router.delete('/pool', pool.deletePool);
 
 /**
  * Module exports

@@ -43,6 +43,8 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(middlewares.filterBody);
+app.use(middlewares.parseParams);
 /**
  * Router
  */
@@ -55,8 +57,6 @@ app.use('/', api);
 const { uncatchableAPI, errorHandler } = require('./routes/error');
 app.use(uncatchableAPI);
 app.use(errorHandler);
-app.use(middlewares.filterBody);
-app.use(middlewares.parseParams);
 
 /**
  * Start server

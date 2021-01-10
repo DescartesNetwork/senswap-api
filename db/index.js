@@ -1,4 +1,5 @@
 const IP = require('./ip.schema');
+const Pool = require('./pool.schema');
 const User = require('./user.schema');
 
 /**
@@ -6,5 +7,6 @@ const User = require('./user.schema');
  */
 module.exports = {
   IP,
+  Pool,
   User,
 }

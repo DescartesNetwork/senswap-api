@@ -70,7 +70,7 @@ module.exports = {
     const { user } = req.body;
     if (!user) return next('Invalid input');
 
-    return db.Item.findOneAndDelete({ _id: user._id }, function (er, re) {
+    return db.User.findOneAndDelete({ _id: user._id }, function (er, re) {
       if (er) return next('Database error');
       return res.send({ status: 'OK', data: re });
     });
