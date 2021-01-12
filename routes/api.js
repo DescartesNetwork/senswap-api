@@ -29,7 +29,7 @@ router.post('/faucet', auth.preventSpam, faucet.airdrop);
 // Pool
 router.get('/pool', pool.getPool);
 router.get('/pools', pool.getPools);
-router.post('/pool', pool.addPool);
+router.post('/pool', pool.parsePool, pool.addPool);
 router.put('/pool', pool.updatePool);
 router.delete('/pool', pool.deletePool);
 

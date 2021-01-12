@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 /**
  * Schema
  */
-var User = new mongoose.Schema({
+const User = new mongoose.Schema({
   address: { type: String, required: true, unique: true },
   tokenAccounts: { type: Array, required: true, default: [] },
   lptAccounts: { type: Array, required: true, default: [] },

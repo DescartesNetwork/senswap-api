@@ -36,6 +36,11 @@ const POOL_SCHEMA = [
  */
 const SOL = {}
 
+SOL.toSymbol = (symbol) => {
+  if (!symbol) return '';
+  return symbol.join('').replace(/\u0000/g, '').replace(/-/g, '');
+}
+
 SOL.isAddress = (address) => {
   try {
     const publicKey = new PublicKey(address);

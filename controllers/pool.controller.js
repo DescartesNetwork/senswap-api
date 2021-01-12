@@ -7,6 +7,26 @@ const sol = require('../helpers/sol');
 module.exports = {
 
   /**
+   * Moddileware to parse pool data
+   * @function parsePool
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  parsePool: function (req, res, next) {
+    const { pool } = req.body;
+    if (!pool || !pool.address) return next('Invalid input');
+    return sol.getPurePoolData(pool.address).then(data => {
+      const { token: { address, symbol } } = data;
+      req.body.pool.token = address;
+      req.body.pool.symbol = sol.toSymbol(symbol);
+      return next();
+    }).catch(er => {
+      return next(er);
+    });
+  },
+
+  /**
    * Get an pool
    * @function getPool
    * @param {*} req
