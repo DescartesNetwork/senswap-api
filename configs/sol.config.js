@@ -8,14 +8,14 @@ var configs = {};
  */
 configs.development = {
   coinbase: {
-    address: '4QCAA5sjpf2m6Mweu5UkQcuqbLCA6sVJS9eK6VEocCnj',
-    secretKey: 'd5209524464e438e740a4c75c40a84eed298ee5e621396054e66074a957ebd9c3284091f5c1a113eb756ddc4e077e9e86b0383710a03af41778ff1a7288bafe0',
+    address: 'HNuQFgpiZV6Mex9CSnZKs4EEAVzH9g3KnL8WwVwo72un',
+    secretKey: '158fb85c0ab799efd946a7ed18d9a68ad4d669ff2a84a7c2992b751072fd7889f357700e52edf26f741c9f9d0143a09c620eb7f1489951fa1245fe8431f16ba9',
   },
-  node: 'http://localhost:8899',
-  tokenFactoryAddress: 'BcfSEsgAp5cfTS18CQTWibq63KJoR2Rkd6ENXu5AyaWU',
-  tokens: ['3ywMF3fJ9UjaUYpsGWptXX6xnK8DbqBtpi8t2nyJJ1Nu', 'BZRjDPpRszJZcdEAaTvukidWdoFTE29yhrxn9XGdkeua'],
-  tokenAccounts: ['GUmSeA4Kg1Xb1J3qwv35y7FJG1VkrEPTAEQwgKqYRGvd', '46xJ5RQ8mJHGuuD2SQcL6iCeCKaY2t4hiF9nEMC3MRa9'],
-  airdropAmount: 100000000000n, // 100 SPRX
+  node: 'https://devnet.solana.com',
+  tokenFactoryAddress: 'JCbHuGZyQiC9abPpEHfs6W8evgumEYthpqqBsgDRewa8',
+  tokens: ['8FEeLWU2U6LdwoCz1vHFssTMtzQUNwP5cvwP2ohrMYcE', '4cTjQrw4qUU8fKFBVS8K9de3HJRn3bk6d445BMJ5aUXd'],
+  tokenAccounts: ['CxtUFA7ThVJYjJor8rtNffQiVaL7cjFHtXeuvVtSWwS5', '7iHxtkpDuF4evhpBsUQLeVTWjtQuTj6Gdw33bCp9gyop'],
+  airdropAmount: 100000000000n, // 100 tokens
 };
 
 /**
@@ -23,14 +23,14 @@ configs.development = {
  */
 configs.staging = {
   coinbase: {
-    address: null,
-    secretKey: null,
+    address: 'HNuQFgpiZV6Mex9CSnZKs4EEAVzH9g3KnL8WwVwo72un',
+    secretKey: '158fb85c0ab799efd946a7ed18d9a68ad4d669ff2a84a7c2992b751072fd7889f357700e52edf26f741c9f9d0143a09c620eb7f1489951fa1245fe8431f16ba9',
   },
-  node: 'http://localhost:8899',
-  tokenFactoryAddress: 'D5cRXHjf8aMpdSgjTMf2tGuEJRSEF5azVGbYmKZeRFxc',
-  tokens: [],
-  tokenAccounts: [],
-  airdropAmount: 10
+  node: 'https://devnet.solana.com',
+  tokenFactoryAddress: 'JCbHuGZyQiC9abPpEHfs6W8evgumEYthpqqBsgDRewa8',
+  tokens: ['8FEeLWU2U6LdwoCz1vHFssTMtzQUNwP5cvwP2ohrMYcE', '4cTjQrw4qUU8fKFBVS8K9de3HJRn3bk6d445BMJ5aUXd'],
+  tokenAccounts: ['CxtUFA7ThVJYjJor8rtNffQiVaL7cjFHtXeuvVtSWwS5', '7iHxtkpDuF4evhpBsUQLeVTWjtQuTj6Gdw33bCp9gyop'],
+  airdropAmount: 100000000000n
 };
 
 /**
