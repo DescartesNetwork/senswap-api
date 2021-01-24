@@ -15,7 +15,7 @@ configs.development = {
  * Staging configurations
  */
 configs.staging = {
-  port: 80,
+  port: 443,
   tpm: 2, // times per minute
 };
 
@@ -23,7 +23,7 @@ configs.staging = {
  * Production configurations
  */
 configs.production = {
-  port: 80,
+  port: 443,
   tpm: 2, // times per minute
 };
 

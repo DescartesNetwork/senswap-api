@@ -6,5 +6,5 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-EXPOSE 80
-CMD [ "npm", "run", "stag" ]
+EXPOSE 443
+CMD [ "npm", "run", "__ENV__" ]
