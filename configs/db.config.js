@@ -1,6 +1,5 @@
 const atlas = require('./credential/atlas.json');
 
-console.log(atlas);
 
 /**
  * Contructor
