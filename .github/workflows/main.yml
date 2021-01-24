@@ -34,4 +34,3 @@ jobs:
             sudo docker image prune -a -f
             echo "{\"username\":\"${{ secrets.DB_USERNAME }}\",\"password\":\"${{ secrets.DB_PASSWORD }}\",\"dbname\":\"${{ secrets.DB_NAME }}\"}" >> atlas.json
             sudo docker cp ./atlas.json api:/home/senswap-api/configs/credential/atlas.json
-            rm -rf atlas.json
