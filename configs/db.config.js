@@ -1,4 +1,4 @@
-const atlas = require('./credential/atlas.js')
+const atlas = require('./credential/atlas.json')
 
 /**
  * Contructor
