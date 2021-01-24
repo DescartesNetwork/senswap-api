@@ -1,3 +1,5 @@
+const atlas = require('./credential/atlas.js')
+
 /**
  * Contructor
  */
@@ -26,7 +28,7 @@ configs.development = {
  */
 configs.staging = {
   // MongoDB
-  MONGO_HOST: `mongodb+srv://${null /* username */}:${null /* password */}@cluster0-rl4kc.mongodb.net/${null /* dbname */}?retryWrites=true&w=majority`,
+  MONGO_HOST: `mongodb+srv://${atlas.username}:${atlas.password}@cluster0.evt3v.mongodb.net/${atlas.dbname}?retryWrites=true&w=majority`,
   MONGO_CONNECT_OPTION: {
     useCreateIndex: true,
     useNewUrlParser: true,
