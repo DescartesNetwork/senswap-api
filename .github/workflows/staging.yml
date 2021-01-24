@@ -15,7 +15,7 @@ jobs:
         run: echo Start deploying SenSwap API
       - name: Build Dockerfile
         run: |
-          sed -E 's/__(([^_]|_[^_])*)__/${\1}/g' Dockerfile | stag
+          sed -i 's/__ENV__/stag/g' Dockerfile
           cat Dockerfile
       - name: Build docker
         uses: docker/build-push-action@v1
@@ -34,7 +34,7 @@ jobs:
             sudo docker stop api
             sudo docker rm api
             sudo docker pull tuphanson/senswap-api
-            sudo docker run -d -p 443:443 --name api tuphanson/senswap-api
+            sudo docker run -d -p 80:80 --name api tuphanson/senswap-api
             sudo docker image prune -a -f
             echo "{\"username\":\"${{ secrets.DB_USERNAME }}\",\"password\":\"${{ secrets.DB_PASSWORD }}\",\"dbname\":\"${{ secrets.DB_NAME }}\"}" >> atlas.json
             sudo docker cp ./atlas.json api:/home/senswap-api/configs/credential/atlas.json
