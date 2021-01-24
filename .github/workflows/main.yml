@@ -15,7 +15,7 @@ jobs:
         run: echo Start deploying SenSwap API
       - name: Build Dockerfile
         run: |
-          sed -E 's/__(([^_]|_[^_])*)__/${\1}/g' Dockerfile | prod
+          sed -i 's/__ENV__/prod/g' Dockerfile
           cat Dockerfile
       - name: Build docker
         uses: docker/build-push-action@v1
