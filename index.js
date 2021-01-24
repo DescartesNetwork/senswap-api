@@ -23,6 +23,7 @@ global.configs = configs;
 /**
  * Creating a MongoDB connection
  */
+console.log(configs.db);
 mongoose.Promise = Promise;
 mongoose.set('debug', configs.db.MONGO_DEBUG_MODE);
 mongoose.connect(configs.db.MONGO_HOST, configs.db.MONGO_CONNECT_OPTION, function (er) {
