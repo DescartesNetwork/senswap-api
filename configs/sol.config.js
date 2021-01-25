@@ -1,3 +1,5 @@
+const { LAMPORTS_PER_SOL } = require('@solana/web3.js');
+
 /**
  * Contructor
  */
@@ -16,6 +18,7 @@ configs.development = {
   tokens: ['8FEeLWU2U6LdwoCz1vHFssTMtzQUNwP5cvwP2ohrMYcE', '4cTjQrw4qUU8fKFBVS8K9de3HJRn3bk6d445BMJ5aUXd'],
   tokenAccounts: ['CxtUFA7ThVJYjJor8rtNffQiVaL7cjFHtXeuvVtSWwS5', '7iHxtkpDuF4evhpBsUQLeVTWjtQuTj6Gdw33bCp9gyop'],
   airdropAmount: 100000000000n, // 100 tokens
+  lamports: 0.1 * LAMPORTS_PER_SOL, // 0.01 SOL
 };
 
 /**
@@ -30,7 +33,8 @@ configs.staging = {
   tokenFactoryAddress: 'JCbHuGZyQiC9abPpEHfs6W8evgumEYthpqqBsgDRewa8',
   tokens: ['8FEeLWU2U6LdwoCz1vHFssTMtzQUNwP5cvwP2ohrMYcE', '4cTjQrw4qUU8fKFBVS8K9de3HJRn3bk6d445BMJ5aUXd'],
   tokenAccounts: ['CxtUFA7ThVJYjJor8rtNffQiVaL7cjFHtXeuvVtSWwS5', '7iHxtkpDuF4evhpBsUQLeVTWjtQuTj6Gdw33bCp9gyop'],
-  airdropAmount: 100000000000n
+  airdropAmount: 100000000000n, // 100 tokens
+  lamports: 0.1 * LAMPORTS_PER_SOL, // 0.01 SOL
 };
 
 /**
@@ -45,7 +49,8 @@ configs.production = {
   tokenFactoryAddress: 'D5cRXHjf8aMpdSgjTMf2tGuEJRSEF5azVGbYmKZeRFxc',
   tokens: [],
   tokenAccounts: [],
-  airdropAmount: 10
+  airdropAmount: 0n, // 0 tokens
+  lamports: 0 * LAMPORTS_PER_SOL, // 0 SOL
 };
 
 /**

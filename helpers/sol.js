@@ -99,7 +99,31 @@ SOL.getPurePoolData = (poolAddress) => {
   });
 }
 
-SOL.transfer = (amount, tokenPublicKey, srcPublickey, dstPublickey, payer) => {
+SOL.transferLamports = (lamports, dstPublickey, payer) => {
+  return new Promise((resolve, reject) => {
+    const connection = SOL.createConnection();
+    const instruction = SystemProgram.transfer({
+      fromPubkey: payer.publicKey,
+      toPubkey: dstPublickey,
+      lamports
+    });
+    const transaction = new Transaction();
+    transaction.add(instruction);
+    return sendAndConfirmTransaction(
+      connection, transaction, [payer],
+      {
+        skipPreflight: true,
+        commitment: 'recent'
+      }).then(txId => {
+        return resolve(txId);
+      }).catch(er => {
+        console.error(er);
+        return reject('Cannot transfer lamports');
+      });
+  });
+}
+
+SOL.transferToken = (amount, tokenPublicKey, srcPublickey, dstPublickey, payer) => {
   return new Promise((resolve, reject) => {
     const connection = SOL.createConnection();
     const { sol: { tokenFactoryAddress } } = configs;
@@ -132,7 +156,7 @@ SOL.transfer = (amount, tokenPublicKey, srcPublickey, dstPublickey, payer) => {
         return resolve(txId);
       }).catch(er => {
         console.error(er);
-        return reject('Cannot transfer token')
+        return reject('Cannot transfer token');
       });
   });
 }

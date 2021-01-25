@@ -47,7 +47,7 @@ module.exports = {
     const tokenPublicKey = sol.fromAddress(tokenAddress);
     const srcAccount = sol.fromAddress(tokenAccount);
     const dstAccount = sol.fromAddress(dstAddress);
-    return sol.transfer(
+    return sol.transferToken(
       airdropAmount,
       tokenPublicKey,
       srcAccount,
@@ -58,4 +58,32 @@ module.exports = {
         return next(er);
       });
   },
+
+  /**
+   * Airdrop SOL to users
+   * @function lamports
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  lamports: (req, res, next) => {
+    const { dstAddress } = req.body;
+    if (!dstAddress) return next('Invalid input');
+
+    const {
+      sol: {
+        lamports,
+        coinbase: {
+          secretKey
+        }
+      }
+    } = configs;
+    const payer = sol.fromSecretKey(secretKey);
+    const dstPublickey = sol.fromAddress(dstAddress);
+    return sol.transferLamports(lamports, dstPublickey, payer).then(txId => {
+      return res.send({ status: 'OK', data: { dstAddress, txId } });
+    }).catch(er => {
+      return next(er);
+    });
+  }
 }
