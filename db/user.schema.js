@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
  */
 const User = new mongoose.Schema({
   address: { type: String, required: true, unique: true },
-  tokenAccounts: { type: Array, required: true, default: [] },
-  lptAccounts: { type: Array, required: true, default: [] },
+  tokens: { type: Array, required: true, default: [] },
+  delegates: { type: Array, required: true, default: [] },
+  pools: { type: Array, required: true, default: [] },
 }, { timestamps: true });
 
 /**
