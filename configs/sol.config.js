@@ -10,13 +10,13 @@ var configs = {};
  */
 configs.development = {
   coinbase: {
-    address: 'HNuQFgpiZV6Mex9CSnZKs4EEAVzH9g3KnL8WwVwo72un',
-    secretKey: '158fb85c0ab799efd946a7ed18d9a68ad4d669ff2a84a7c2992b751072fd7889f357700e52edf26f741c9f9d0143a09c620eb7f1489951fa1245fe8431f16ba9',
+    address: '5vHjWRc2hys4XwZkMktg35N8oALt5d1ZXYkwCXXX3JHm',
+    secretKey: 'e06a1a17cf400f6c322e32377a9a7653eecf58f3eb0061023b743c689b43a5fa491573553e4afdcdcd1c94692a138dd2fd0dc0f6946ef798ba34ac1ad00b3720',
   },
   node: 'https://devnet.solana.com',
-  tokenFactoryAddress: 'JCbHuGZyQiC9abPpEHfs6W8evgumEYthpqqBsgDRewa8',
-  tokens: ['8FEeLWU2U6LdwoCz1vHFssTMtzQUNwP5cvwP2ohrMYcE', '4cTjQrw4qUU8fKFBVS8K9de3HJRn3bk6d445BMJ5aUXd'],
-  tokenAccounts: ['CxtUFA7ThVJYjJor8rtNffQiVaL7cjFHtXeuvVtSWwS5', '7iHxtkpDuF4evhpBsUQLeVTWjtQuTj6Gdw33bCp9gyop'],
+  spltAddress: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+  mints: ['8jk4eJymMfNZV9mkRNxJEt2VJ3pRvdJvD5FE94GXGBPM', '27hdcZv7RtuMp75vupThR3T4KLsL61t476eosMdoec4c'],
+  accounts: ['9W3JQdp1pUerAHtXUgVDmYrAtM8oSB7s5a1VQdBL6ifn', '3e7nCzPJiqwFf7opkvoHc9cdyzdrwmzTanStDJSKZkjn'],
   airdropAmount: 100000000000n, // 100 tokens
   lamports: 0.1 * LAMPORTS_PER_SOL, // 0.01 SOL
 };
@@ -26,13 +26,13 @@ configs.development = {
  */
 configs.staging = {
   coinbase: {
-    address: 'HNuQFgpiZV6Mex9CSnZKs4EEAVzH9g3KnL8WwVwo72un',
-    secretKey: '158fb85c0ab799efd946a7ed18d9a68ad4d669ff2a84a7c2992b751072fd7889f357700e52edf26f741c9f9d0143a09c620eb7f1489951fa1245fe8431f16ba9',
+    address: '5vHjWRc2hys4XwZkMktg35N8oALt5d1ZXYkwCXXX3JHm',
+    secretKey: 'e06a1a17cf400f6c322e32377a9a7653eecf58f3eb0061023b743c689b43a5fa491573553e4afdcdcd1c94692a138dd2fd0dc0f6946ef798ba34ac1ad00b3720',
   },
   node: 'https://devnet.solana.com',
-  tokenFactoryAddress: 'JCbHuGZyQiC9abPpEHfs6W8evgumEYthpqqBsgDRewa8',
-  tokens: ['8FEeLWU2U6LdwoCz1vHFssTMtzQUNwP5cvwP2ohrMYcE', '4cTjQrw4qUU8fKFBVS8K9de3HJRn3bk6d445BMJ5aUXd'],
-  tokenAccounts: ['CxtUFA7ThVJYjJor8rtNffQiVaL7cjFHtXeuvVtSWwS5', '7iHxtkpDuF4evhpBsUQLeVTWjtQuTj6Gdw33bCp9gyop'],
+  spltAddress: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+  mints: ['8jk4eJymMfNZV9mkRNxJEt2VJ3pRvdJvD5FE94GXGBPM', '27hdcZv7RtuMp75vupThR3T4KLsL61t476eosMdoec4c'],
+  accounts: ['9W3JQdp1pUerAHtXUgVDmYrAtM8oSB7s5a1VQdBL6ifn', '3e7nCzPJiqwFf7opkvoHc9cdyzdrwmzTanStDJSKZkjn'],
   airdropAmount: 100000000000n, // 100 tokens
   lamports: 0.1 * LAMPORTS_PER_SOL, // 0.01 SOL
 };
@@ -45,10 +45,10 @@ configs.production = {
     address: null,
     secretKey: null,
   },
-  node: 'http://localhost:8899',
-  tokenFactoryAddress: 'D5cRXHjf8aMpdSgjTMf2tGuEJRSEF5azVGbYmKZeRFxc',
-  tokens: [],
-  tokenAccounts: [],
+  node: 'https://devnet.solana.com',
+  spltAddress: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+  mints: [],
+  accounts: [],
   airdropAmount: 0n, // 0 tokens
   lamports: 0 * LAMPORTS_PER_SOL, // 0 SOL
 };

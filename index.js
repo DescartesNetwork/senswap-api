@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const ssjs = require('senswapjs');
 
 const middlewares = require('./helpers/middlewares');
 
@@ -45,6 +46,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(middlewares.filterBody);
 app.use(middlewares.parseParams);
+
+/**
+ * SenswapJS
+ */
+global.splt = new ssjs.SPLT();
+global.swap = new ssjs.Swap();
+global.lamports = new ssjs.Lamports();
+
 /**
  * Router
  */

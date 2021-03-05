@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
  */
 const Pool = new mongoose.Schema({
   address: { type: String, required: true, unique: true },
-  token: { type: String, required: true },
+  mint: { type: String, required: true },
   symbol: { type: String, required: true },
   email: { type: String, required: true },
   cgk: { type: String, required: true }, // CoinGecko API

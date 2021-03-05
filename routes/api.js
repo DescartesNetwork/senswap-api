@@ -5,7 +5,7 @@ const router = express.Router();
  * Middlewares & Graphs
  */
 const {
-  auth, faucet, user, pool,
+  auth, faucet, user, pool, mint,
 } = require('../controllers');
 
 /**
@@ -24,8 +24,8 @@ router.delete('/user', user.deleteUser);
 
 // Faucet
 router.get('/faucet', faucet.getWhiteList);
-router.post('/faucet/tokens', auth.preventSpam, faucet.airdrop);
-router.post('/faucet/lamports', auth.preventSpam, faucet.lamports);
+router.post('/faucet/airdrop', auth.preventSpam, faucet.airdrop);
+router.post('/faucet/fund', auth.preventSpam, faucet.fund);
 
 // Pool
 router.get('/pool', pool.getPool);
@@ -33,6 +33,13 @@ router.get('/pools', pool.getPools);
 router.post('/pool', pool.parsePool, pool.addPool);
 // router.put('/pool', pool.updatePool);
 // router.delete('/pool', pool.deletePool);
+
+// Mint
+router.get('/mint', mint.getMint);
+router.get('/mints', mint.getMints);
+router.post('/mint', mint.addMint);
+router.put('/mint', mint.updateMint);
+router.delete('/mint', mint.deleteMint);
 
 /**
  * Module exports

@@ -1,7 +1,9 @@
 const configs = global.configs;
+const swap = global.swap;
+
+const ssjs = require('senswapjs');
 
 const db = require('../db');
-const sol = require('../helpers/sol');
 
 
 module.exports = {
@@ -16,10 +18,13 @@ module.exports = {
   parsePool: function (req, res, next) {
     const { pool } = req.body;
     if (!pool || !pool.address) return next('Invalid input');
-    return sol.getPurePoolData(pool.address).then(data => {
-      const { token: { address, symbol } } = data;
-      req.body.pool.token = address;
-      req.body.pool.symbol = sol.toSymbol(symbol);
+    return swap.getPoolData(pool.address).then(data => {
+      const { mint: { address } } = data;
+      req.body.pool.mint = address;
+    }).then(re => {
+      return ssjs.symbolFromCGK(pool.cgk);
+    }).then(symbol => {
+      req.body.pool.symbol = symbol;
       return next();
     }).catch(er => {
       return next(er);
@@ -78,8 +83,8 @@ module.exports = {
     const { pool } = req.body;
     if (!pool) return next('Invalid input');
 
-    return sol.getPurePoolData(pool.address).then(({ token }) => {
-      pool.token = token.address;
+    return swap.getPoolData(pool.address).then(({ mint }) => {
+      pool.mint = mint.address;
       const newPool = new db.Pool({ ...pool });
       return newPool.save(function (er, re) {
         if (er) return next('Database error');
