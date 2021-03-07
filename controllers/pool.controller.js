@@ -21,10 +21,7 @@ module.exports = {
     return swap.getPoolData(pool.address).then(data => {
       const { mint: { address } } = data;
       req.body.pool.mint = address;
-    }).then(re => {
-      return ssjs.symbolFromCGK(pool.cgk);
-    }).then(symbol => {
-      req.body.pool.symbol = symbol;
+      req.body.pool.verified = false;
       return next();
     }).catch(er => {
       return next(er);
@@ -83,15 +80,10 @@ module.exports = {
     const { pool } = req.body;
     if (!pool) return next('Invalid input');
 
-    return swap.getPoolData(pool.address).then(({ mint }) => {
-      pool.mint = mint.address;
-      const newPool = new db.Pool({ ...pool });
-      return newPool.save(function (er, re) {
-        if (er) return next('Database error');
-        return res.send({ status: 'OK', data: re });
-      });
-    }).catch(er => {
-      return next(er);
+    const newPool = new db.Pool({ ...pool });
+    return newPool.save(function (er, re) {
+      if (er) return next('Database error');
+      return res.send({ status: 'OK', data: re });
     });
   },
 

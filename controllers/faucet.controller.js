@@ -16,7 +16,7 @@ module.exports = {
    */
   getWhiteList: (req, res, next) => {
     const { sol: { mints } } = configs;
-    return res.send({ status: 'OK', data: { mints } });
+    return res.send({ status: 'OK', data: mints });
   },
 
   /**
