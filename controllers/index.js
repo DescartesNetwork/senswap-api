@@ -3,6 +3,7 @@ const faucet = require('./faucet.controller');
 const pool = require('./pool.controller');
 const user = require('./user.controller');
 const mint = require('./mint.controller');
+const ping = require('./ping.controller');
 
 module.exports = {
   auth,
@@ -10,4 +11,5 @@ module.exports = {
   pool,
   user,
   mint,
+  ping,
 }

@@ -1,4 +1,4 @@
-const utils = require('./utils');
+const util = require('./util');
 
 /**
  * Constructor
@@ -22,7 +22,7 @@ Middlewares.filterBody = function (req, res, next) {
 Middlewares.parseParams = function (req, res, next) {
   if (!req.query) return next();
   let params = JSON.stringify(req.query);
-  req.query = utils.deepParseJSON(params);
+  req.query = util.deepParseJSON(params);
   return next()
 }
 

@@ -36,4 +36,15 @@ Utils.deepParseJSON = function (jsonString) {
   else return value;
 }
 
+Utils.parseRole = function (role) {
+  const roles = {
+    'guest': 0,
+    'user': 1,
+    'operator': 2,
+    'admin': 3,
+  }
+  if (!role) role = 'guest';
+  return roles[role] || 0;
+}
+
 module.exports = Utils;
