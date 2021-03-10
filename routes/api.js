@@ -18,7 +18,7 @@ const {
 
 // User
 router.get('/user', user.getUser);
-router.post('/user', auth.bearerToken('user'), user.addUser);
+router.post('/user', user.addUser);
 router.put('/user', auth.bearerToken('user'), user.updateUser);
 router.delete('/user', auth.bearerToken('user'), user.deleteUser);
 
