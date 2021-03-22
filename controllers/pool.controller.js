@@ -1,15 +1,13 @@
 const configs = global.configs;
 const swap = global.swap;
 
-const ssjs = require('senswapjs');
-
 const db = require('../db');
 
 
 module.exports = {
 
   /**
-   * Moddileware to parse pool data
+   * Middleware to parse pool data
    * @function parsePool
    * @param {*} req
    * @param {*} res
@@ -19,8 +17,9 @@ module.exports = {
     const { pool } = req.body;
     if (!pool || !pool.address) return next('Invalid input');
     return swap.getPoolData(pool.address).then(data => {
-      const { mint: { address } } = data;
-      req.body.pool.mint = address;
+      const { mint: { address: mintAddress }, network } = data;
+      req.body.pool.network = network;
+      req.body.pool.mint = mintAddress;
       req.body.pool.verified = false;
       return next();
     }).catch(er => {

@@ -27,7 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.10",
     "morgan": "^1.10.0",
-    "senswapjs": "0.0.50",
+    "senswapjs": "0.0.56",
     "soprox-abi": "0.0.10"
   },
   "devDependencies": {
