@@ -81,6 +81,7 @@ module.exports = {
 
     const newPool = new db.Pool({ ...pool });
     return newPool.save(function (er, re) {
+      console.log(er)
       if (er) return next('Database error');
       return res.send({ status: 'OK', data: re });
     });
