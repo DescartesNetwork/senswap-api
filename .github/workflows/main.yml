@@ -36,6 +36,6 @@ jobs:
             sudo docker pull tuphanson/senswap-api-mainnet
             sudo docker run -d -p 80:80 --name api tuphanson/senswap-api-mainnet
             sudo docker image prune -a -f
-            echo "{\"username\":\"${{ secrets.DB_USERNAME_MAINNET }}\",\"password\":\"${{ secrets.DB_PASSWORD_MAINNET }}\",\"dbname\":\"senswap-api\"}" >> atlas.json
+            echo "{\"username\":\"${{ secrets.DB_USERNAME_MAINNET }}\",\"password\":\"${{ secrets.DB_PASSWORD_MAINNET }}\",\"dbname\":\"senswap_api_mainnet\"}" >> atlas.json
             sudo docker cp ./atlas.json api:/home/senswap-api/configs/credential/atlas.json
             rm -rf atlas.json
