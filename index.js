@@ -50,8 +50,9 @@ app.use(middlewares.parseParams);
 /**
  * SenswapJS
  */
-global.splt = new ssjs.SPLT();
-global.swap = new ssjs.Swap();
+const { sol: { node, spltAddress, splataAddress, swapAddress } } = configs;
+global.splt = new ssjs.SPLT(spltAddress, splataAddress, node);
+global.swap = new ssjs.Swap(swapAddress, spltAddress, node);
 global.lamports = new ssjs.Lamports();
 
 /**
@@ -64,6 +65,7 @@ app.use('/', api);
 
 // Error handler
 const { uncatchableAPI, errorHandler } = require('./routes/error');
+const { config } = require('process');
 app.use(uncatchableAPI);
 app.use(errorHandler);
 
