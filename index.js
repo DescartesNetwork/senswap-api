@@ -65,7 +65,6 @@ app.use('/', api);
 
 // Error handler
 const { uncatchableAPI, errorHandler } = require('./routes/error');
-const { config } = require('process');
 app.use(uncatchableAPI);
 app.use(errorHandler);
 
