@@ -5,7 +5,7 @@ const router = express.Router();
  * Middlewares & Graphs
  */
 const {
-  auth, faucet, user, pool, mint, ping, network,
+  auth, faucet, user, pool, mint, ping,
 } = require('../controllers');
 
 /**
@@ -26,11 +26,6 @@ router.delete('/user', auth.bearerToken('user'), user.deleteUser);
 router.get('/faucet', faucet.getWhiteList);
 router.post('/faucet/airdrop', auth.preventSpam, faucet.airdrop);
 router.post('/faucet/fund', auth.preventSpam, faucet.fund);
-
-// Network
-router.get('/network', network.getNetwork);
-router.get('/networks', network.getNetworks);
-router.post('/network', auth.bearerToken('admin'), network.parseNetwork, network.addNetwork);
 
 // Pool
 router.get('/pool', pool.getPool);

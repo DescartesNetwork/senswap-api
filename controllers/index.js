@@ -4,7 +4,6 @@ const pool = require('./pool.controller');
 const user = require('./user.controller');
 const mint = require('./mint.controller');
 const ping = require('./ping.controller');
-const network = require('./network.controller');
 
 module.exports = {
   auth,
@@ -13,5 +12,4 @@ module.exports = {
   user,
   mint,
   ping,
-  network,
 }

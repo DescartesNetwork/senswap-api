@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const Mint = new mongoose.Schema({
   address: { type: String, required: true, unique: true },
   icon: { type: String, required: true },
+  ticket: { type: String, required: true },
   symbol: { type: String, required: true },
   name: { type: String, required: true },
 }, { timestamps: true });
