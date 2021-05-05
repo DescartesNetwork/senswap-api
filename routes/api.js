@@ -19,8 +19,8 @@ const {
 // User
 router.get('/user', user.getUser);
 router.post('/user', user.addUser);
-router.put('/user', auth.bearerToken('user'), user.updateUser);
-router.delete('/user', auth.bearerToken('user'), user.deleteUser);
+router.put('/user', auth.bearerToken('admin'), user.updateUser);
+router.delete('/user', auth.bearerToken('admin'), user.deleteUser);
 
 // Faucet
 router.get('/faucet', faucet.getWhiteList);
