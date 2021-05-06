@@ -17,10 +17,16 @@ module.exports = {
     const { pool } = req.body;
     if (!pool || !pool.address) return next('Invalid input');
     return swap.getPoolData(pool.address).then(data => {
-      const { mint: { address: mintAddress }, network: { address: networkAddress } } = data;
-      req.body.pool.network = networkAddress;
-      req.body.pool.mint = mintAddress;
-      req.body.pool.verified = false;
+      const {
+        mint_lpt: { address: mintLPT },
+        mint_s: { address: mintS },
+        mint_a: { address: mintA },
+        mint_b: { address: mintB },
+      } = data;
+      req.body.pool.mintLPT = mintLPT;
+      req.body.pool.mintS = mintS;
+      req.body.pool.mintA = mintA;
+      req.body.pool.mintB = mintB;
       return next();
     }).catch(er => {
       return next(er);

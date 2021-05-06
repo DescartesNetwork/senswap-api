@@ -5,9 +5,10 @@ const mongoose = require('mongoose');
  */
 const Pool = new mongoose.Schema({
   address: { type: String, required: true, unique: true },
-  network: { type: String, required: true },
-  mint: { type: String, required: true },
-  verified: { type: Boolean, default: false },
+  mintLPT: { type: String, required: true },
+  mintS: { type: String, required: true },
+  mintA: { type: String, required: true },
+  mintB: { type: String, required: true },
 }, { timestamps: true });
 
 /**

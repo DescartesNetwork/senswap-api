@@ -52,7 +52,7 @@ app.use(middlewares.parseParams);
  */
 const { sol: { node, spltAddress, splataAddress, swapAddress } } = configs;
 global.splt = new ssjs.SPLT(spltAddress, splataAddress, node);
-global.swap = new ssjs.Swap(swapAddress, spltAddress, node);
+global.swap = new ssjs.Swap(swapAddress, spltAddress, splataAddress, node);
 global.lamports = new ssjs.Lamports();
 
 /**
