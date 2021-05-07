@@ -46,7 +46,22 @@ module.exports = {
 
     return db.Pool.findOne({ _id }, function (er, re) {
       if (er) return next('Database error');
-      return res.send({ status: 'OK', data: re });
+
+      let data = re.toObject();
+      if (!data) return res.send({ status: 'OK', data });
+
+      const { mintS, mintA, mintB } = re;
+      const mintAddresses = [mintS, mintA, mintB];
+      return Promise.all(mintAddresses.map(address => db.Mint.findOne({ address }))).then(re => {
+        re.forEach(mintData => {
+          if (data.mintS == mintData.address) data.mintS = mintData.toObject();
+          if (data.mintA == mintData.address) data.mintA = mintData.toObject();
+          if (data.mintB == mintData.address) data.mintB = mintData.toObject();
+        });
+        return res.send({ status: 'OK', data });
+      }).catch(er => {
+        return next('Database error');
+      });
     });
   },
 
