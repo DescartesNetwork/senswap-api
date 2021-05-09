@@ -58,6 +58,7 @@ module.exports = {
           if (data.mintA == mintData.address) data.mintA = mintData.toObject();
           if (data.mintB == mintData.address) data.mintB = mintData.toObject();
         });
+        data.mintLPT = { address: data.mintLPT }
         return res.send({ status: 'OK', data });
       }).catch(er => {
         return next('Database error');
@@ -77,11 +78,13 @@ module.exports = {
     const limit = req.query.limit || configs.db.LIMIT_DEFAULT;
     const page = req.query.page || configs.db.PAGE_DEFAULT;
 
+    let paging = [{ $skip: limit * page }, { $limit: limit }]
+    if (limit == -1) paging = []
+
     return db.Pool.aggregate([
       { $match: condition },
       { $sort: { createdAt: -1 } },
-      { $skip: limit * page },
-      { $limit: limit },
+      ...paging,
       { $project: { _id: 1 } }
     ]).exec(function (er, re) {
       if (er) return next('Database error');
