@@ -1,6 +1,5 @@
 const configs = global.configs;
 const splt = global.splt;
-const lamports = global.lamports;
 
 const ssjs = require('senswapjs');
 
@@ -46,31 +45,11 @@ module.exports = {
     const srcAddress = accounts[mintIndex];
     if (!ssjs.isAddress(srcAddress)) return next('Invalid source address');
 
-    const payer = ssjs.fromSecretKey(secretKey);
-    return splt.transfer(airdropAmount, srcAddress, dstAddress, payer).then(txId => {
+    const wallet = new ssjs.RawWallet(secretKey);
+    return splt.transfer(airdropAmount, srcAddress, dstAddress, wallet).then(txId => {
       return res.send({ status: 'OK', data: { mintAddress, dstAddress, txId } });
     }).catch(er => {
       return next(er);
     });
   },
-
-  /**
-   * Airdrop SOL to users
-   * @function fund
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
-   */
-  fund: (req, res, next) => {
-    const { dstAddress } = req.body;
-    if (!ssjs.isAddress(dstAddress)) return next('Invalid input');
-
-    const { sol: { lamports: amount, coinbase: { secretKey } } } = configs;
-    const payer = ssjs.fromSecretKey(secretKey);
-    return lamports.transfer(amount, dstAddress, payer).then(txId => {
-      return res.send({ status: 'OK', data: { dstAddress, txId } });
-    }).catch(er => {
-      return next(er);
-    });
-  }
 }

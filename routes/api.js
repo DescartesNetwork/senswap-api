@@ -25,14 +25,13 @@ router.delete('/user', auth.bearerToken('admin'), user.deleteUser);
 // Faucet
 router.get('/faucet', faucet.getWhiteList);
 router.post('/faucet/airdrop', auth.preventSpam, faucet.airdrop);
-router.post('/faucet/fund', auth.preventSpam, faucet.fund);
 
 // Pool
 router.get('/pool', pool.getPool);
 router.get('/pools', pool.getPools);
 router.post('/pool', pool.parsePool, pool.addPool);
 router.put('/pool', auth.bearerToken('operator'), pool.updatePool);
-router.delete('/pool', auth.bearerToken('operator'), pool.deletePool);
+router.delete('/pool', auth.bearerToken('admin'), pool.deletePool);
 
 // Mint
 router.get('/mint', mint.getMint);

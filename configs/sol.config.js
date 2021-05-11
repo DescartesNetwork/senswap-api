@@ -16,11 +16,9 @@ configs.development = {
   node: 'https://devnet.solana.com',
   spltAddress: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
   splataAddress: 'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
-  swapAddress: 'DV9TWNbaN8nabswzdDT1PYqqcP8eKvBtGGXShKj5E5ya',
   mints: ['8jk4eJymMfNZV9mkRNxJEt2VJ3pRvdJvD5FE94GXGBPM', '27hdcZv7RtuMp75vupThR3T4KLsL61t476eosMdoec4c', '5YwUkPdXLoujGkZuo9B4LsLKj3hdkDcfP4derpspifSJ'],
   accounts: ['4mBj4rqzwGZNJSwQT6ErjNhpJdT2DjYm7ShpepvXP9W8', '8UMCo415r51DBrjeTXCkmazwrgxTn6yvupvh3F1SvuQz', '5UaNrW6GvGLzGBxwVp5Re2UY395n3nPt56skK2KLeheA'],
   airdropAmount: 100000000000n, // 100 tokens
-  lamports: 0.1 * LAMPORTS_PER_SOL, // 0.01 SOL
 };
 
 /**
@@ -34,11 +32,9 @@ configs.staging = {
   node: 'https://devnet.solana.com',
   spltAddress: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
   splataAddress: 'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
-  swapAddress: 'DV9TWNbaN8nabswzdDT1PYqqcP8eKvBtGGXShKj5E5ya',
   mints: ['8jk4eJymMfNZV9mkRNxJEt2VJ3pRvdJvD5FE94GXGBPM', '27hdcZv7RtuMp75vupThR3T4KLsL61t476eosMdoec4c', '5YwUkPdXLoujGkZuo9B4LsLKj3hdkDcfP4derpspifSJ'],
   accounts: ['4mBj4rqzwGZNJSwQT6ErjNhpJdT2DjYm7ShpepvXP9W8', '8UMCo415r51DBrjeTXCkmazwrgxTn6yvupvh3F1SvuQz', '5UaNrW6GvGLzGBxwVp5Re2UY395n3nPt56skK2KLeheA'],
   airdropAmount: 100000000000n, // 100 tokens
-  lamports: 0.1 * LAMPORTS_PER_SOL, // 0.01 SOL
 };
 
 /**
@@ -52,11 +48,9 @@ configs.production = {
   node: 'https://api.mainnet-beta.solana.com',
   spltAddress: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
   splataAddress: 'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
-  swapAddress: 'SenTTyY6aynBEQ6ZKTF4ex16Bq9E2R5zhm7yjzXjTeX',
   mints: [],
   accounts: [],
   airdropAmount: 0n, // 0 tokens
-  lamports: 0 * LAMPORTS_PER_SOL, // 0 SOL
 };
 
 /**
