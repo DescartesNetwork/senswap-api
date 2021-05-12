@@ -1,5 +1,7 @@
 const configs = global.configs;
 
+const ssjs = require('senswapjs');
+
 const db = require('../db');
 
 
@@ -13,10 +15,10 @@ module.exports = {
    * @param {*} next
    */
   getMint: function (req, res, next) {
-    const { _id } = req.query;
-    if (!_id) return next('Invalid input');
+    const { address } = req.query;
+    if (!ssjs.isAddress(address)) return next('Invalid input');
 
-    return db.Mint.findOne({ _id }, function (er, re) {
+    return db.Mint.findOne({ address }, function (er, re) {
       if (er) return next('Database error');
       return res.send({ status: 'OK', data: re });
     });
@@ -34,12 +36,14 @@ module.exports = {
     const limit = req.query.limit || configs.db.LIMIT_DEFAULT;
     const page = req.query.page || configs.db.PAGE_DEFAULT;
 
+    let paging = [{ $skip: limit * page }, { $limit: limit }]
+    if (limit == -1) paging = []
+
     return db.Mint.aggregate([
       { $match: condition },
       { $sort: { createdAt: -1 } },
-      { $skip: limit * page },
-      { $limit: limit },
-      { $project: { _id: 1 } }
+      ...paging,
+      { $project: { address: 1 } }
     ]).exec(function (er, re) {
       if (er) return next('Database error');
       return res.send({ status: 'OK', data: re, pagination: { limit, page } });

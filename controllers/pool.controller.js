@@ -1,6 +1,8 @@
 const configs = global.configs;
 const swap = global.swap;
 
+const ssjs = require('senswapjs');
+
 const db = require('../db');
 
 
@@ -41,11 +43,12 @@ module.exports = {
    * @param {*} next
    */
   getPool: function (req, res, next) {
-    const { _id } = req.query;
-    if (!_id) return next('Invalid input');
+    const { address } = req.query;
+    if (!ssjs.isAddress(address)) return next('Invalid input');
 
-    return db.Pool.findOne({ _id }, function (er, re) {
+    return db.Pool.findOne({ address }, function (er, re) {
       if (er) return next('Database error');
+      if (!re) return res.send({ status: 'OK', data: {} });
 
       let data = re.toObject();
       if (!data) return res.send({ status: 'OK', data });
@@ -85,7 +88,7 @@ module.exports = {
       { $match: condition },
       { $sort: { createdAt: -1 } },
       ...paging,
-      { $project: { _id: 1 } }
+      { $project: { address: 1 } }
     ]).exec(function (er, re) {
       if (er) return next('Database error');
       return res.send({ status: 'OK', data: re, pagination: { limit, page } });

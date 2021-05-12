@@ -1,3 +1,5 @@
+const ssjs = require('senswapjs');
+
 const db = require('../db');
 
 
@@ -12,7 +14,7 @@ module.exports = {
    */
   getUser: function (req, res, next) {
     const { address } = req.query;
-    if (!address) return next('Invalid input');
+    if (!ssjs.isAddress(address)) return next('Invalid input');
 
     return db.User.findOne({ address }, function (er, re) {
       if (er) return next('Database error');
@@ -49,7 +51,7 @@ module.exports = {
   updateUser: function (req, res, next) {
     const { user } = req.body;
     if (!user) return next('Invalid input');
-    
+
     delete user.role;
     return db.User.findOneAndUpdate(
       { _id: user._id },
