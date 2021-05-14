@@ -50,8 +50,9 @@ app.use(middlewares.parseParams);
 /**
  * SenswapJS
  */
-const { sol: { node, spltAddress, splataAddress } } = configs;
+const { sol: { node, swapAddress, spltAddress, splataAddress } } = configs;
 global.splt = new ssjs.SPLT(spltAddress, splataAddress, node);
+global.swap = new ssjs.LiteSwap(swapAddress, spltAddress, splataAddress, node);
 
 /**
  * Router
