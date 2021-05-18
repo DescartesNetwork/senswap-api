@@ -1,4 +1,4 @@
-const atlas = require('./credential/atlas.json');
+const { DBUSERNAME, DBPASSWORD } = process.env
 
 
 /**
@@ -29,7 +29,7 @@ configs.development = {
  */
 configs.staging = {
   // MongoDB
-  MONGO_HOST: `mongodb+srv://${atlas.username}:${atlas.password}@cluster0.evt3v.mongodb.net/${atlas.dbname}?retryWrites=true&w=majority`,
+  MONGO_HOST: `mongodb+srv://${DBUSERNAME}:${DBPASSWORD}@cluster0.evt3v.mongodb.net/senswap_api_testnet?retryWrites=true&w=majority`,
   MONGO_CONNECT_OPTION: {
     useCreateIndex: true,
     useNewUrlParser: true,
@@ -47,7 +47,7 @@ configs.staging = {
  */
 configs.production = {
   // MongoDB
-  MONGO_HOST: `mongodb+srv://${atlas.username}:${atlas.password}@cluster1-pl-0.evt3v.mongodb.net/${atlas.dbname}?retryWrites=true&w=majority`,
+  MONGO_HOST: `mongodb+srv://${DBUSERNAME}:${DBPASSWORD}@cluster1-pl-0.evt3v.mongodb.net/senswap_api_mainnet?retryWrites=true&w=majority`,
   MONGO_CONNECT_OPTION: {
     useCreateIndex: true,
     useNewUrlParser: true,
