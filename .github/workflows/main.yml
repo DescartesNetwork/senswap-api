@@ -30,9 +30,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
-      - name: Download task definition
+      - name: Build ECS Task Definition
         run: |
-          aws ecs describe-task-definition --task-definition my-task-definition-family --query taskDefinition > task-definition.json
-          cat task-definition.json
+          sed -i 's/__DBUSERNAME__/${{ secrets.DB_USERNAME_MAINNET }}/g' task-definition.json
+          sed -i 's/__DBPASSWORD__/${{ secrets.DB_PASSWORD_MAINNET }}/g' task-definition.json
       - name: Update ECS Task Definition
-        run: aws --version
+        run: aws-actions/amazon-ecs-render-task-definition@v1
+        task-definition: task-definition.json
+        container-name: senswap-api-mainnet
+        image: tuphanson/senswap-api-mainnet
