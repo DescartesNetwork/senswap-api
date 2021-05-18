@@ -8,6 +8,6 @@ module.exports = {
    * @param {*} next
    */
   ok: function (req, res, next) {
-    return res.send({ status: 'OK', data: true });
+    return res.send({ status: 'OKX', data: true });
   }
 }
