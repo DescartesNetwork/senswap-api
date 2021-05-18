@@ -36,6 +36,7 @@ jobs:
           sed -i 's/__DBPASSWORD__/${{ secrets.DB_PASSWORD_MAINNET }}/g' task-definition.json
       - name: Update ECS Task Definition
         run: aws-actions/amazon-ecs-render-task-definition@v1
-        task-definition: task-definition.json
-        container-name: senswap-api-mainnet
-        image: tuphanson/senswap-api-mainnet
+        with:
+          task-definition: task-definition.json
+          container-name: senswap-api-mainnet
+          image: tuphanson/senswap-api-mainnet
