@@ -47,7 +47,7 @@ configs.staging = {
  */
 configs.production = {
   // MongoDB
-  MONGO_HOST: `mongodb+srv://${atlas.username}:${atlas.password}@cluster1.evt3v.mongodb.net/${atlas.dbname}?retryWrites=true&w=majority`,
+  MONGO_HOST: `mongodb+srv://${atlas.username}:${atlas.password}@cluster1-pl-0.evt3v.mongodb.net/${atlas.dbname}?retryWrites=true&w=majority`,
   MONGO_CONNECT_OPTION: {
     useCreateIndex: true,
     useNewUrlParser: true,
