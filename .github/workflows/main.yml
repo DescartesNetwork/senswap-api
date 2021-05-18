@@ -40,3 +40,10 @@ jobs:
           task-definition: task-definition.json
           container-name: senswap-api-mainnet
           image: tuphanson/senswap-api-mainnet:latest
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ecs-senswap-api-mainnet
+          cluster: cluster-senswap-api-mainnet
+          wait-for-service-stability: true
