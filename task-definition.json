@@ -52,7 +52,12 @@
       "dependsOn": null,
       "disableNetworking": null,
       "interactive": null,
-      "healthCheck": null,
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -X GET http://localhost/ping || exit 1"
+        ]
+      },
       "essential": true,
       "links": null,
       "hostname": null,
