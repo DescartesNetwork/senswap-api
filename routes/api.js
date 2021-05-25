@@ -16,6 +16,9 @@ const {
  * @method DELETE: delete data
  */
 
+// Healthcheck
+router.get('/', ping.ok);
+
 // User
 router.get('/user', user.getUser);
 router.post('/user', user.addUser);
