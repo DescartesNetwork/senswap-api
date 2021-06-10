@@ -15,10 +15,11 @@ module.exports = {
    * @param {*} res
    * @param {*} next
    */
-  parsePool: function (req, res, next) {
+  parsePool: async function (req, res, next) {
     const { pool } = req.body;
     if (!pool || !pool.address) return next('Invalid input');
-    return swap.getPoolData(pool.address).then(data => {
+    try {
+      const data = await swap.getPoolData(pool.address);
       const {
         mint_lpt: { address: mintLPT },
         mint_s: { address: mintS },
@@ -30,9 +31,9 @@ module.exports = {
       req.body.pool.mintA = mintA;
       req.body.pool.mintB = mintB;
       return next();
-    }).catch(er => {
+    } catch (er) {
       return next(er);
-    });
+    }
   },
 
   /**
