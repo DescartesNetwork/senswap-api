@@ -51,7 +51,7 @@ router.delete('/ping', auth.bearerToken('user'), ping.ok);
 
 // Stake Pool (Farming)
 router.get('/stake-pools', stakePool.getStakePools);
-router.post('/stake-pool', auth.bearerToken('operator'), stakePool.addStakePool);
+router.post('/stake-pool', stakePool.addStakePool);
 /**
  * Module exports
  */
