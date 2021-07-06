@@ -50,6 +50,7 @@ router.put('/ping', auth.bearerToken('user'), ping.ok);
 router.delete('/ping', auth.bearerToken('user'), ping.ok);
 
 // Stake Pool (Farming)
+router.get('/stake-pool', stakePool.getStakePool);
 router.get('/stake-pools', stakePool.getStakePools);
 router.post('/stake-pool', stakePool.addStakePool);
 /**

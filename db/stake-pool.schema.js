@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
  */
 const stakePool = new mongoose.Schema({
   address: { type: String, required: true, unique: true },
-  mintShare: { type: String, required: true },
+  mintLPT: { type: String, required: true },
 }, { timestamps: true });
 
 /**
