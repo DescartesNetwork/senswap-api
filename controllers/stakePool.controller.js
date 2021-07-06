@@ -14,10 +14,15 @@ module.exports = {
 
     return db.StakePool.findOne({ address }, async function (er, re) {
       if (er) return next("Database error");
+      if (!re) return res.send({ status: 'OK', data: {} });
+
       const stakePoolData = re.toObject();
       const { mintLPT } = stakePoolData;
 
       await db.Pool.findOne({ mintLPT }, async function (er, re) {
+        if (er) return next("Database error");
+        if (!re) return res.send({ status: 'OK', data: {} });
+       
         let pool = re.toObject();
         const { mintS, mintA, mintB } = pool;
         const mintData = await Promise.all([mintS, mintA, mintB].map((address) => db.Mint.findOne({ address })));
