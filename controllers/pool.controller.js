@@ -37,7 +37,7 @@ module.exports = {
   },
 
   /**
-   * Get an pool
+   * Get a pool
    * @function getPool
    * @param {*} req
    * @param {*} res
