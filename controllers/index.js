@@ -5,6 +5,7 @@ const user = require('./user.controller');
 const mint = require('./mint.controller');
 const ping = require('./ping.controller');
 const stakePool = require('./stakePool.controller')
+
 module.exports = {
   auth,
   faucet,
