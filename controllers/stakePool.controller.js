@@ -3,7 +3,7 @@ const db = require("../db");
 
 module.exports = {
   /**
-   * Get an pool
+   * Get a pool
    * @function getStakePool
    * @param {*} req
    * @param {*} res
@@ -22,7 +22,7 @@ module.exports = {
       await db.Pool.findOne({ mintLPT }, async function (er, re) {
         if (er) return next("Database error");
         if (!re) return res.send({ status: 'OK', data: {} });
-       
+
         let pool = re.toObject();
         const { mintS, mintA, mintB } = pool;
         const mintData = await Promise.all([mintS, mintA, mintB].map((address) => db.Mint.findOne({ address })));
