@@ -33,6 +33,7 @@ module.exports = {
       });
     });
   },
+  
   /**
    * Get StakePools
    * @function getStakePools
