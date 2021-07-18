@@ -19,7 +19,7 @@ module.exports = {
       const stakePoolData = re.toObject();
       const { mintLPT } = stakePoolData;
 
-      await db.Pool.findOne({ mintLPT }, async function (er, re) {
+      return db.Pool.findOne({ mintLPT }, async function (er, re) {
         if (er) return next("Database error");
         if (!re) return res.send({ status: 'OK', data: {} });
 
