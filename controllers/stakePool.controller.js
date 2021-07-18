@@ -6,8 +6,9 @@ const db = require("../db");
 
 
 module.exports = {
+
   /**
-   * Get a pool
+   * Get a stake pool
    * @function getStakePool
    * @param {*} req
    * @param {*} res
@@ -17,30 +18,32 @@ module.exports = {
     const { address } = req.query;
     if (!ssjs.isAddress(address)) return next('Invalid input');
 
-    return db.StakePool.findOne({ address }, async function (er, re) {
+    return db.StakePool.findOne({ address }, function (er, re) {
       if (er) return next('Database error');
       if (!re) return res.send({ status: 'OK', data: {} });
 
       const stakePoolData = re.toObject();
       const { mintLPT } = stakePoolData;
-
       return db.Pool.findOne({ mintLPT }, async function (er, re) {
         if (er) return next('Database error');
         if (!re) return res.send({ status: 'OK', data: {} });
 
-        let pool = re.toObject();
-        const { mintS, mintA, mintB } = pool;
-        const mintData = await Promise.all([mintS, mintA, mintB].map((address) => db.Mint.findOne({ address })));
-        stakePoolData.mintS = mintData[0];
-        stakePoolData.mintA = mintData[1];
-        stakePoolData.mintB = mintData[2];
-        return res.send({ status: 'OK', data: stakePoolData });
+        try {
+          const { mintS, mintA, mintB } = re.toObject();
+          const mintData = await Promise.all([mintS, mintA, mintB].map(address => db.Mint.findOne({ address })));
+          stakePoolData.mintS = mintData[0];
+          stakePoolData.mintA = mintData[1];
+          stakePoolData.mintB = mintData[2];
+          return res.send({ status: 'OK', data: stakePoolData });
+        } catch (er) {
+          return next('Database error');
+        }
       });
     });
   },
-  
+
   /**
-   * Get StakePools
+   * Get stake pools
    * @function getStakePools
    * @param {*} req
    * @param {*} res
@@ -66,7 +69,7 @@ module.exports = {
   },
 
   /**
-   * Add a StakePool
+   * Add a stake pool
    * @function addStakePool
    * @param {*} req
    * @param {*} res
@@ -78,7 +81,7 @@ module.exports = {
 
     const newStakePool = new db.StakePool({ ...stakePool });
     return newStakePool.save(function (er, re) {
-      if (er) return next('Database error);
+      if (er) return next('Database error');
       return res.send({ status: 'OK', data: re });
     });
   },
