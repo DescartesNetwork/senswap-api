@@ -5,7 +5,7 @@ const router = express.Router();
  * Middlewares & Graphs
  */
 const {
-  auth, faucet, user, pool, mint, ping,
+  auth, faucet, user, pool, mint, ping, stakePool
 } = require('../controllers');
 
 /**
@@ -48,6 +48,11 @@ router.get('/ping', ping.ok);
 router.post('/ping', auth.bearerToken('user'), ping.ok);
 router.put('/ping', auth.bearerToken('user'), ping.ok);
 router.delete('/ping', auth.bearerToken('user'), ping.ok);
+
+// Stake Pool (Farming)
+router.get('/stake-pool', stakePool.getStakePool);
+router.get('/stake-pools', stakePool.getStakePools);
+router.post('/stake-pool', auth.bearerToken('operator'), stakePool.addStakePool);
 
 /**
  * Module exports
