@@ -1,5 +1,9 @@
 const configs = global.configs;
+
+const ssjs = require('senswapjs');
+
 const db = require("../db");
+
 
 module.exports = {
   /**
@@ -11,6 +15,7 @@ module.exports = {
    */
   getStakePool: function (req, res, next) {
     const { address } = req.query;
+    if (!ssjs.isAddress(address)) return next('Invalid input');
 
     return db.StakePool.findOne({ address }, async function (er, re) {
       if (er) return next('Database error');
