@@ -53,6 +53,7 @@ router.delete('/ping', auth.bearerToken('user'), ping.ok);
 router.get('/stake-pool', stakePool.getStakePool);
 router.get('/stake-pools', stakePool.getStakePools);
 router.post('/stake-pool', auth.bearerToken('operator'), stakePool.addStakePool);
+
 /**
  * Module exports
  */
