@@ -13,14 +13,14 @@ module.exports = {
     const { address } = req.query;
 
     return db.StakePool.findOne({ address }, async function (er, re) {
-      if (er) return next("Database error");
+      if (er) return next('Database error');
       if (!re) return res.send({ status: 'OK', data: {} });
 
       const stakePoolData = re.toObject();
       const { mintLPT } = stakePoolData;
 
       return db.Pool.findOne({ mintLPT }, async function (er, re) {
-        if (er) return next("Database error");
+        if (er) return next('Database error');
         if (!re) return res.send({ status: 'OK', data: {} });
 
         let pool = re.toObject();
@@ -29,7 +29,7 @@ module.exports = {
         stakePoolData.mintS = mintData[0];
         stakePoolData.mintA = mintData[1];
         stakePoolData.mintB = mintData[2];
-        return res.send({ status: "OK", data: stakePoolData });
+        return res.send({ status: 'OK', data: stakePoolData });
       });
     });
   },
@@ -49,9 +49,14 @@ module.exports = {
     let paging = [{ $skip: limit * page }, { $limit: limit }];
     if (limit == -1) paging = [];
 
-    return db.StakePool.aggregate([{ $match: condition }, { $sort: { createdAt: -1 } }, ...paging, { $project: { address: 1 } }]).exec(function (er, re) {
-      if (er) return next("Database error");
-      return res.send({ status: "OK", data: re, pagination: { limit, page } });
+    return db.StakePool.aggregate([
+      { $match: condition },
+      { $sort: { createdAt: -1 } },
+      ...paging,
+      { $project: { address: 1 } }
+    ]).exec(function (er, re) {
+      if (er) return next('Database error');
+      return res.send({ status: 'OK', data: re, pagination: { limit, page } });
     });
   },
 
@@ -64,13 +69,12 @@ module.exports = {
    */
   addStakePool: function (req, res, next) {
     const { stakePool } = req.body;
-    if (!stakePool) return next("Invalid input");
-    console.log("stakePool", stakePool);
-    const newStakePool = new db.StakePool({ ...stakePool });
+    if (!stakePool) return next('Invalid input');
 
+    const newStakePool = new db.StakePool({ ...stakePool });
     return newStakePool.save(function (er, re) {
-      if (er) return next("Database error");
-      return res.send({ status: "OK", data: re });
+      if (er) return next('Database error);
+      return res.send({ status: 'OK', data: re });
     });
   },
 };
