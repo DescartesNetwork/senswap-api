@@ -27,7 +27,7 @@ router.delete('/user', auth.bearerToken('admin'), user.deleteUser);
 
 // Faucet
 router.get('/faucet', faucet.getWhiteList);
-router.post('/faucet/airdrop', auth.preventSpam, faucet.airdrop);
+router.post('/faucet/airdrop', faucet.airdrop);
 
 // Pool
 router.get('/pool', pool.getPool);
